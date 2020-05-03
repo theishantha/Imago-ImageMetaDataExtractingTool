@@ -15,7 +15,6 @@ Application offers also the possibility to calculate Error Level Analysis and pe
 1. Install imago:
 
 Just Download the project repo and set path to imago folder
-⭐Fllow this link to download [source code repo](https://github.com/theishantha/Imago-ImageMetaDataExtractingTool)
 
 2. Once it is finished, just run for man page:
 
