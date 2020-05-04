@@ -10,7 +10,7 @@ Application offers also the possibility to calculate Error Level Analysis and pe
 
 # Setup
 
-## Setup via pip
+## Setup via cloning
 
 1. Install imago:
 
