@@ -6,8 +6,6 @@ import magic
 from PIL import Image, ImageChops, ImageEnhance
 from PIL.ExifTags import TAGS, GPSTAGS
 import imagehash
-import nude
-from nude import Nude
 import datetime
 from geopy.geocoders import Nominatim
 
@@ -34,7 +32,7 @@ def exif_info(filename):
             tag_key = tag.split(" ", 1)[1]
             helper.sqlite_insert(tag_key,tags[tag],os.path.basename(filename))
     return filename
-
+# Calculating MD5
 def md5(filename):
     print ("Calculating md5 of: %s" % (filename,))
     hash_md5 = hashlib.md5()
@@ -44,7 +42,7 @@ def md5(filename):
             md5 = hash_md5.hexdigest()
             helper.sqlite_insert("md5",md5,os.path.basename(filename))
     return md5
-
+# Calculating sha256
 def sha256(filename):
     print ("Calculating sha256 of: %s" % (filename,))
     hash_sha256 = hashlib.sha256()
@@ -54,7 +52,7 @@ def sha256(filename):
             sha256 = hash_sha256.hexdigest()
             helper.sqlite_insert("sha256",sha256,os.path.basename(filename))
     return sha256
-
+# Calculating sha512
 def sha512(filename):
     print ("Calculating sha512 of: %s" % (filename,))
     hash_sha512 = hashlib.sha512()
@@ -66,8 +64,7 @@ def sha512(filename):
     return sha512
 
 
-#modified version of a gist by: https://github.com/ewencp
-##BETA##
+# ELA phase
 def ela(filename, output_path):
     print "****ELA is in Processing****"
     if magic.from_file(filename, mime=True) == "image/jpeg":
@@ -88,7 +85,7 @@ def ela(filename, output_path):
         print "ELA works only with JPEG"
 
 
-#Modified version of a gist by: https://github.com/erans
+# Geolocation Extraction
 def PIL_exif_data_GPS(filename):
     if magic.from_file(filename, mime=True) == "image/jpeg":
         print ("Extraction of GPS data from: %s" % (filename,))
@@ -148,25 +145,8 @@ def PIL_exif_data_GPS(filename):
     return None
 
 
-# based on nude.py
-# https://github.com/hhatto/nude.py
-# BETA
-def detect_nudity(filename):
-    if magic.from_file(filename, mime=True) == "image/jpeg":
-        print ("Check if the image contains nudity: %s" % (filename,))
-        n = Nude(filename)
-        n.parse()
-        nudity = str(n.result)
-        helper.sqlite_insert("Nudity",nudity,os.path.basename(filename))
-        return nudity
-    else:
-        print "Nudity Detection works only with JPEG"
-        return None
 
-#based on JohannesBuchner imagehash
-#https://github.com/JohannesBuchner/imagehash
-
-
+#ahash
 def ahash(filename):
     if "image" in magic.from_file(filename, mime=True):
         print ("Calculating aHash of: %s" % (filename,))
@@ -177,8 +157,7 @@ def ahash(filename):
         print "aHash works only with images"
         return None
 
-#based on JohannesBuchner imagehash
-#https://github.com/JohannesBuchner/imagehash
+#phash
 def phash(filename):
     if "image" in magic.from_file(filename, mime=True):
         print ("Calculating pHash of: %s" % (filename,))
@@ -189,8 +168,7 @@ def phash(filename):
         print "pHash works only with images"
         return None
 
-#based on JohannesBuchner imagehash
-#https://github.com/JohannesBuchner/imagehash
+#whash
 def whash(filename):
     if "image" in magic.from_file(filename, mime=True):
         print ("Calculating wHash of: %s" % (filename,))
@@ -201,8 +179,7 @@ def whash(filename):
         print "wHash works only with image images"
         return None
 
-#based on JohannesBuchner imagehash
-#https://github.com/JohannesBuchner/imagehash
+#dhash
 def dhash(filename):
     if "image" in magic.from_file(filename, mime=True):
         print ("Calculating dHash Vertical of: %s" % (filename,))

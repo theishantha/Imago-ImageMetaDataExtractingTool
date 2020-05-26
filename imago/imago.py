@@ -57,11 +57,12 @@ def main(args=None):
 			# Creation of the SQLite row for the file
 			helper.image_row("evidences", filename)
 			extractor.basic_info(filename)
-			#if args.nude:
-			#	extractor.detect_nudity(filename)
+			#n
+            #Extracting GPS data
 			if args.gps:
 				extractor.PIL_exif_data_GPS(filename)
 
+			#Extraction of hash data
 			if args.percentualhash == "ahash":
 				extractor.ahash(filename)
 			elif args.percentualhash == "phash":
