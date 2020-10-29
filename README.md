@@ -2,7 +2,7 @@
 
 
 # Image Metadata Extracting Tool - Imago
-### University Final Project
+### University Final Year Project
 
 This is a python tool that extract digital evidences from images recursively.
 This  tool is useful throughout a digital forensic investigation. If you need to extract digital evidences and you have a lot of images, through this tool you will be able to compare them easily. this tool allows to extract the evidences into a CSV file. If in a JPEG exif are present GPS coordinates, application can extract the longitude and latitude and it can convert them to degrees and to retrieve relevant information like city, nation, zip code...
